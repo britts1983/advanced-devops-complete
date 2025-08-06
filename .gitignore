@@ -1,0 +1,16 @@
+# System files
+.DS_Store
+
+# IDE folders
+.vscode/
+.idea/
+
+# Terraform junk
+.terraform/
+terraform.tfstate*
+terraform.tfvars
+
+# Python & Node junk
+__pycache__/
+node_modules/
+

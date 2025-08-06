@@ -1,0 +1,18 @@
+# ansible/playbook.yml
+
+- name: Sample Ansible Playbook
+  hosts: local
+  become: false
+  tasks:
+    - name: Create a demo config file
+      copy:
+        content: |
+          # This is a sample config file created by Ansible
+          environment: dev
+          app_name: nginx
+        dest: /tmp/devops_config.conf
+
+    - name: Print a success message
+      debug:
+        msg: "Config file created successfully!"
+
