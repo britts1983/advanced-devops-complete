@@ -1,3 +1,4 @@
+cat > k8s/service.yaml <<EOF
 ---
 apiVersion: v1
 kind: Service
@@ -11,4 +12,5 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
+EOF
 

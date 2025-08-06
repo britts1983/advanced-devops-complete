@@ -1,3 +1,4 @@
+cat > k8s/deployment.yaml <<EOF
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -20,4 +21,5 @@ spec:
           image: nginx:latest
           ports:
             - containerPort: 80
+EOF
 
