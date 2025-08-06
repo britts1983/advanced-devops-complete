@@ -1,5 +1,3 @@
-# .github/workflows/devops.yml
-
 name: DevOps CI Pipeline
 
 on:
@@ -42,5 +40,31 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ansible
 
-      - name: An
+      - name: Ansible Syntax Check
+        run: ansible-playbook -i inventory.ini playbook.yml --syntax-check
+
+  kubernetes:
+    name: Kubernetes YAML Validation
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: k8s
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install yamllint and kubeval
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl yamllint
+          curl -Lo kubeval.tar.gz https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
+          tar -xzf kubeval.tar.gz
+          chmod +x kubeval
+          sudo mv kubeval /usr/local/bin/
+
+      - name: YAML Lint
+        run: yamllint .
+
+      - name: Kubeval Validation
+        run: kubeval *.yaml
 
