@@ -1,13 +1,13 @@
 # terraform/main.tf
 
 provider "aws" {
-  region = "us-east-1"
+  region     = "us-east-1"
   access_key = "mock_access_key"
   secret_key = "mock_secret_key"
 }
 
 resource "aws_s3_bucket" "devops_bucket" {
-  bucket = "my-devops-demo-bucket-britto"
+  bucket        = "my-devops-demo-bucket-britto"
   force_destroy = true
 
   tags = {
